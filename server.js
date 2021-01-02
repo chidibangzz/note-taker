@@ -7,6 +7,9 @@ const dbJSON = require("./db.json");
 const path = require("path");
 const htmlRoutes = require("./routes/html");
 const apiRoutes = require("./routes/api");
+const store = require('./store.js');
+const router = require("./routes/html");
+
 // Sets up the Express App
 // =============================================================
 const app = express();
@@ -16,19 +19,20 @@ const PORT = process.env.PORT || 3000;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-app.use(express.static(__dirname + "/public"));
-
+app.use(express.static("public"));
+app.use("/", htmlRoutes)
+//app.use("/api", apiRoutes)
 
 // Routes
 // =============================================================
 //app.use(htmlRoutes)
 
-app.get("/", function (req, res) { 
-  res.sendFile(path.join(__dirname, "public/index.html"));
-}); 
-app.get("/notes", function (req, res) { 
-  res.sendFile(path.join(__dirname, "public/notes.html"));
-}); 
+// app.get("/", function (req, res) { 
+//   res.sendFile(path.join(__dirname, "public/index.html"));
+// }); 
+// app.get("/notes", function (req, res) { 
+//   res.sendFile(path.join(__dirname, "public/notes.html"));
+// }); 
 
 
 //app.use(apiRoutes)
@@ -61,6 +65,13 @@ app.post("/api/note", function(req, res) {
     return res.json(note);
   });
 });
+
+// app.delete("api/notes/:id"), (req, res) => {
+//   store
+//   .removeNote(req.params.id)
+//   .then(() => res.json({ok: true}))
+//   .catch((err) => res.status(500).json(err));
+// };
 
 app.get("*", function(req, res) {
   res.send("Sending you the homepage");
