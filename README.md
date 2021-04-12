@@ -7,6 +7,7 @@ I wanted to be able to take important information and save it for a later purpos
  
 ## Screenshots
 
+<img src="note-taker.png" alt="employee" width="500" height="200">
 
 ## Tech/framework used
 node
