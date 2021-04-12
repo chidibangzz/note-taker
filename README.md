@@ -1,7 +1,7 @@
-## Project title
-Note taker app
+## Note Taker app
 This app allows you to save notes when the user types in
-their desired tile and message they want to save
+their desired tile and message they want to save.
+
 ## Motivation
 I wanted to be able to take important information and save it for a later purpose. I also didn't want to use the calender that my iphone gave me
  
